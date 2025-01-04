@@ -1,0 +1,654 @@
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #4f46e5;
+    --bg-dark: #0f172a;
+    --bg-card: #1e293b;
+    --text-light: #f8fafc;
+    --text-gray: #94a3b8;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, #6366f1, #4f46e5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    color: var(--text-light);
+    background-color: var(--bg-dark);
+    letter-spacing: -0.02em;
+}
+
+header {
+    text-align: center;
+    padding: 60px 0;
+    background: rgba(99, 102, 241, 0.1);
+    backdrop-filter: blur(10px);
+    margin-bottom: 40px;
+    border-radius: 12px;
+    color: white;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: white;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+section {
+    margin-bottom: 60px;
+    padding: 20px;
+    border-radius: 16px;
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    background: rgba(30, 41, 59, 0.8);
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    position: relative;
+    padding-bottom: 10px;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.proyecto-grid, .empresas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.proyecto, .empresa {
+    background-color: var(--bg-dark);
+    padding: 25px;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    background: rgba(30, 41, 59, 0.8);
+}
+
+.proyecto:hover, .empresa:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.proyecto h3, .empresa h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.proyecto p, .empresa p {
+    color: var(--text-gray);
+}
+
+.contacto {
+    text-align: center;
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 12px;
+    color: white;
+}
+
+.contacto h2 {
+    color: white;
+}
+
+.contacto h2::after {
+    background-color: white;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.contacto p {
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
+
+.contacto a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.contacto a:hover {
+    opacity: 0.8;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+        filter: blur(5px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+section {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    header {
+        padding: 40px 20px;
+    }
+    
+    .proyecto-grid, .empresas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .proyecto:hover, .empresa:hover {
+        transform: none;
+    }
+    
+    section {
+        animation: none;
+    }
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(30, 41, 59, 0.8);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin-left: 2rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.cta-button {
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid var(--primary-color);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    color: white !important;
+}
+
+.cta-button:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.especialidades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.tag {
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.proyecto i, .empresa i {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.empresa-stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.empresa-stats span {
+    background: var(--bg-dark);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+.contacto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contacto-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: var(--bg-dark);
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    background: rgba(30, 41, 59, 0.8);
+}
+
+.contacto-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.contacto-item i {
+    font-size: 1.5rem;
+}
+
+/* Mejoras responsive */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .header-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .contacto-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animaciones suaves */
+.proyecto, .empresa, .contacto-item {
+    transition: all 0.3s ease;
+}
+
+/* Efectos hover mejorados */
+.proyecto:hover, .empresa:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.empresa {
+    position: relative;
+    overflow: hidden;
+    padding-top: 40px; /* Aumentado para dar espacio al logo */
+}
+
+.empresa-logo {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(99, 102, 241, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    padding: 15px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+
+.empresa-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Hace que los logos sean blancos */
+}
+
+.empresa h3 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.periodo {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.empresa-stats {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Mejora la animación hover */
+.empresa:hover .empresa-logo {
+    border-color: var(--secondary-color);
+    transform: translateX(-50%) scale(1.1);
+    transition: all 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .empresa-logo {
+        width: 60px;
+        height: 60px;
+        top: -30px;
+    }
+    
+    .empresa {
+        padding-top: 30px;
+    }
+}
+
+/* Estilos actualizados para el carrusel de logos */
+.logos-slider {
+    overflow: hidden;
+    padding: 40px 0;
+    background: var(--bg-card);
+    margin: 20px 0;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: var(--shadow);
+}
+
+.logos-slide {
+    display: flex;
+    animation: slideLogos 25s linear infinite;
+    width: max-content; /* Ajuste automático al contenido */
+    gap: 50px; /* Espacio entre logos */
+}
+
+.logos-slide img {
+    height: 60px; /* Logos más grandes */
+    object-fit: contain;
+    opacity: 0.6;
+    transition: all 0.5s ease;
+    filter: grayscale(100%); /* Logos en escala de grises por defecto */
+}
+
+.logos-slide img:hover {
+    opacity: 1;
+    transform: scale(1.2);
+    filter: grayscale(0%); /* Color original al hacer hover */
+}
+
+/* Efecto de desvanecimiento en los bordes mejorado */
+.logos-slider::before,
+.logos-slider::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+}
+
+.logos-slider::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-card) 0%, transparent 100%);
+}
+
+.logos-slider::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-card) 0%, transparent 100%);
+}
+
+/* Animación del carrusel mejorada */
+@keyframes slideLogos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-100% / 2));
+    }
+}
+
+/* Pausa al hover sobre el contenedor */
+.logos-slider:hover .logos-slide {
+    animation-play-state: paused;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+    .logos-slide img {
+        height: 40px;
+    }
+    
+    .logos-slider::before,
+    .logos-slider::after {
+        width: 100px;
+    }
+}
+
+/* Nuevos estilos para los elementos agregados */
+.badge {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.section-header {
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+}
+
+.overline {
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.primary-button, .secondary-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.primary-button {
+    background: var(--primary-color);
+    color: white;
+}
+
+.secondary-button {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.header-cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.accent {
+    color: var(--primary-color);
+}
+
+/* Mejoras en el responsive */
+@media (max-width: 768px) {
+    .header-cta {
+        flex-direction: column;
+    }
+    
+    .primary-button, .secondary-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Estilos para las cards de servicios */
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: gap 0.3s ease;
+}
+
+.card-link:hover {
+    gap: 0.75rem;
+}
+
+.subtitle {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Mejoras en las cards de contacto */
+.contacto-item {
+    text-align: center;
+}
+
+.contacto-item h3 {
+    color: var(--text-light);
+    margin: 0.5rem 0;
+}
+
+.contacto-item p {
+    color: var(--text-gray);
+}
+
+.contacto-item i {
+    color: var(--primary-color);
+}
+
+/* Ajuste en el header de secciones */
+.section-header {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: var(--text-light);
+}
+
+.section-header h2::after {
+    display: none;
+}
